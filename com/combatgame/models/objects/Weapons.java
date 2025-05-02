@@ -5,6 +5,8 @@ public interface Weapons {
 
     int getDamage();
 
+    int getDefense();
+
     boolean getDamageType();
 
     void setDamageType(boolean damageType);
@@ -12,4 +14,8 @@ public interface Weapons {
     void setDamage(int damage);
 
     void setName(String name);
+
+    void displayIllustration(); // Method to display weapon illustration
+
+    void setDefense(int defense); // Method to set defense value
 }
