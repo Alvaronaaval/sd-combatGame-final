@@ -8,7 +8,7 @@ public class WeaponBow implements Weapons {
 
     public WeaponBow() {
         this.name = "Bow";
-        this.damage = 10;
+        this.damage = 15;
         this.damageType = false; // false = physical damage, true = magical damage
         this.defense = 3; // Example defense value for the bow
     }
