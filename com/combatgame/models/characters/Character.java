@@ -9,7 +9,7 @@ public abstract class Character {
     private int stealth;
     private CharacterState state;
 
-    Character(int health, int strength, int defense, int agility, int magic, int stealth) {
+    public Character(int health, int strength, int defense, int agility, int magic, int stealth) {
         this.health = health;
         this.strength = strength;
         this.defense = defense;
@@ -19,7 +19,9 @@ public abstract class Character {
         state = new NormalState(this); //Default state
     }
 
-    void applyState(CharacterState newState) {
+    public void applyState(CharacterState newState) {
         this.state = newState;
-    }    
+    }
+
+
 }
