@@ -16,7 +16,7 @@ public abstract class Character {
         this.agility = agility;
         this.magic = magic;
         this.stealth = stealth;
-        state = new NormalState(this); //Default state
+        state = new NormalState(); //Default state
     }
 
     public void applyState(CharacterState newState) {
