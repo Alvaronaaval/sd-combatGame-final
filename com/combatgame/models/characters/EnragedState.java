@@ -3,7 +3,7 @@ package com.combatgame.models.characters;
 public class NormalState implements CharacterState {
     @Override
     public void wounded(CharacterState state) {
-        System.out.println("Character cannot become already Wounded State.");
+        System.out.println("Character cannot become Wounded State.");
     }
     @Override
     public void paralyzed(CharacterState state) {

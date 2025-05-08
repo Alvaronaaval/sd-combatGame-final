@@ -1,6 +1,6 @@
 package com.combatgame.models.characters;
 
-public class ParalyzedState implements CharacterState {
+public class BurnedState implements CharacterState {
     @Override
     public void wounded(CharacterState state) {
         System.out.println("Character cannot become Wounded State.");
@@ -24,6 +24,6 @@ public class ParalyzedState implements CharacterState {
     }
     @Override
     public String getStateName() {
-        return "Paralyzed State";
+        return "Burned State";
     }
 }
