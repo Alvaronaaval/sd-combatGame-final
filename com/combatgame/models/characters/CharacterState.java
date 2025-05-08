@@ -5,5 +5,7 @@ public interface CharacterState {
     void paralyzed(CharacterState state);
     void enraged(CharacterState state);
     void healed(CharacterState state);
+
+    void stateEffect(Attributes attributes);
     String getStateName();
 }
