@@ -1,6 +1,6 @@
 package com.combatgame.models.characters;
 
-public class Attributes {
+public abstract class Attributes {
 
     private int health;     // 0-100
     private int strength;   // 0-10
@@ -9,6 +9,8 @@ public class Attributes {
     private int magic;      // 0-10
     private int speed;      // 0-10
 
+    priavate CharacterState state; // character state
+
     public Attributes(int health, int strength, int agility, int defense, int magic, int speed) {           // constructor
         setHealth(health);
         setStrength(strength);
@@ -16,9 +18,10 @@ public class Attributes {
         setDefense(defense);
         setMagic(magic);
         setSpeed(speed);
+        state = new NormalState(); //Default state
     }
 
-    // fucking getters
+    // getters
     public int getHealth() { return health; }
     public int getStrength() { return strength; }
     public int getAgility() { return agility; }
@@ -26,7 +29,7 @@ public class Attributes {
     public int getMagic() { return magic; }
     public int getSpeed() { return speed; }
 
-    // fucking setters
+    // setters
     public void setHealth(int health) {
         this.health = Math.max(0, Math.min(100, health));               // usa una validacion de rango 0-100
     }
@@ -51,5 +54,7 @@ public class Attributes {
         this.speed = Math.max(0, Math.min(10, speed));                  // usa una validacion de rango 0-10
     }
 
-
+    public void applyState(CharacterState newState) {
+        this.state = newState;
+    }
 }
