@@ -18,9 +18,15 @@ public class NormalState implements CharacterState {
         state.changeState(new NormalState());
         System.out.println("Character is now in Normal State.");
     }
+    public void checkStatus(CharacterState state, Attributes attributes) {
+        if(attributes.getHealth() >= 20)
+            healed(state); // Return to Normal State if health is above 20
+        System.out.println("");
+    }
     @Override
     public void stateEffect(Attributes attributes) {
-        
+        attributes.setStrength(attributes.getStrength()*1.5);
+        attributes.setMagic(attributes.getMagic()*1.5);
     }
     @Override
     public String getStateName() {

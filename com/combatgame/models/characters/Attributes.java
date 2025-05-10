@@ -9,7 +9,7 @@ public abstract class Attributes {
     private int magic;      // 0-10
     private int speed;      // 0-10
 
-    priavate CharacterState state; // character state
+    private CharacterState state; // character state
 
     public Attributes(int health, int strength, int agility, int defense, int magic, int speed) {           // constructor
         setHealth(health);

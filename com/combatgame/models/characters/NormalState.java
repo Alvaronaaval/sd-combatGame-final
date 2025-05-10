@@ -20,6 +20,9 @@ public class NormalState implements CharacterState {
     public void healed(CharacterState state) {
         System.out.println("Character is already healed.");
     }
+    public void checkStatus(CharacterState state, Attributes attributes) {
+        
+    }
     @Override
     public void stateEffect(Attributes attributes) {
         System.out.println("Normal State has no effect."); // No effect on attributes

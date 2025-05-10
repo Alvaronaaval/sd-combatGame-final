@@ -6,6 +6,7 @@ public interface CharacterState {
     void enraged(CharacterState state);
     void healed(CharacterState state);
 
+    void checkStatus(CharacterState state, Attributes attributes);
     void stateEffect(Attributes attributes);
     String getStateName();
 }
