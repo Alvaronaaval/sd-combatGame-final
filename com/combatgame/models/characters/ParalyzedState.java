@@ -20,7 +20,7 @@ public class ParalyzedState implements CharacterState {
     public void healed(Fighter fighter) {
         fighter.applyState(new NormalState());
         System.out.println("Character is now in Normal State.");
-        fighter.getSkipTurn() == false; // Disable skip turn
+        fighter.setSkipTurn(false); // Disable skip turn
         paralysisCount = 0; // Reset paralysis count after healing
     }
 
@@ -31,7 +31,7 @@ public class ParalyzedState implements CharacterState {
     }
     @Override
     public void stateEffect(Fighter fighter) {
-        fighter.getSkipTurn() == true;  // Enable skip turn
+        fighter.setSkipTurn(true);  // Enable skip turn
         paralysisCount++;
     }
     @Override

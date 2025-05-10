@@ -8,6 +8,7 @@ public interface Fighter {
     Attributes getAttributes();
     void applyState(CharacterState newState);
     boolean getSkipTurn();
+    void setSkipTurn(boolean skipTurn);
 }
 
 // interfaz que sirve para definir los métodos que deben implementar tanto los enemigos como los jugadores

@@ -69,6 +69,10 @@ public class Player implements Fighter {
         return skipTurn;
     }
 
+    public void setSkipTurn(boolean skipTurn) {
+        this.skipTurn = skipTurn;
+    }
+
     public void takeTurn() {
 
     }

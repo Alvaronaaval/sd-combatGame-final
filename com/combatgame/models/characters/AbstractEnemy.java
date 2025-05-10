@@ -22,6 +22,10 @@ public abstract class AbstractEnemy implements Fighter {
         return skipTurn;
     }
 
+    public void setSkipTurn(boolean skipTurn) {
+        this.skipTurn = skipTurn;
+    }
+
     public Attributes getAttributes() {
         return attributes;
     }
