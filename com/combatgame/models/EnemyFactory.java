@@ -1,18 +1,17 @@
-
 package com.combatgame.models;
+
 import com.combatgame.models.characters.*;
 
+import java.util.Random;
+
 public class EnemyFactory {
-    public static Enemy createEnemy(WorldType world) {
-        switch (world) {
-            case JUNGLE:
-                return new JungleWarrior();
-            case VOLCANO:
-                return new VolcanoSorcerer();
-            case OCEAN:
-                return new OceanMutant();
-            default:
-                throw new IllegalArgumentException("Unknown world");
+    public static Enemy createEnemy(WorldEffect world) {
+        int pick = new Random().nextInt(3);
+        switch (pick) {
+            case 0: return new Warrior();
+            case 1: return new Sorcerer(world);
+            case 2: return new Mutant(world);
+            default: return new Warrior();
         }
     }
 }

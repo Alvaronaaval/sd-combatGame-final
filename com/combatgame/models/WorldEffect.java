@@ -1,7 +1,8 @@
 package com.combatgame.models;
 
-public enum WorldType {
+public enum WorldEffect {
     JUNGLE,
     VOLCANO,
     OCEAN
 }
+
