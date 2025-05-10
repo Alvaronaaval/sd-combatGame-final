@@ -4,14 +4,14 @@ import com.combatgame.models.WorldEffect;
 
 public class NewMutant extends AbstractEnemy {
     public NewMutant(WorldEffect worldEffect) {
-        super(worldEffect, Attributes.randomAttributes()); // crea atributos aleatorios
+        super(worldEffect, attributes.randomAttributes()); // crea atributos aleatorios
     }
 
     @Override
     public void takeTurn() {
         System.out.println("Mutant performs an unpredictable action!");
         if (worldEffect == WorldEffect.VOLCANO) {
-            health += 5;
+            attributes.getHealth() += 5;
             System.out.println("Mutant regenerates health!");
         }
     }

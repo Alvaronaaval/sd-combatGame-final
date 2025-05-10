@@ -5,7 +5,6 @@ import com.combatgame.models.WorldEffect;
 
 public abstract class AbstractEnemy implements Fighter {
     protected Attributes attributes;
-    protected int health = 100;
     protected WorldEffect worldEffect;
 
     public AbstractEnemy(WorldEffect worldEffect, Attributes attributes) {
@@ -13,19 +12,18 @@ public abstract class AbstractEnemy implements Fighter {
         this.attributes = attributes;
     }
 
-    @Override
-    public int getHealth() {
-        return health;
+    public Attributes getAttributes() {
+        return attributes;
     }
 
     @Override
     public boolean isAlive() {
-        return health > 0;
+        return attributes.getHealth() > 0;
     }
 
     @Override
     public void receiveDamage(int damage) {
         int realDamage = Math.max(damage - attributes.getDefense(), 1);
-        health -= realDamage;
+        attributes.getHealth(); -= realDamage;
     }
 }

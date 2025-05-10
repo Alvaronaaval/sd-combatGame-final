@@ -6,6 +6,7 @@ public interface Fighter {
     boolean isAlive();
     String getType();
     int getHealth();
+    Attributes getAttributes();
 }
 
 // interfaz que sirve para definir los métodos que deben implementar tanto los enemigos como los jugadores
