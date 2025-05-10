@@ -1,32 +1,41 @@
 package com.combatgame.models.characters;
 
 public class NormalState implements CharacterState {
+    int firstTime = 0;  // Variable to track if the state effect has been applied
+
     @Override
-    public void wounded(CharacterState state) {
-        System.out.println("Character cannot become Wounded State.");
-    }
-    @Override
-    public void paralyzed(CharacterState state) {
+    public void paralyzed(Fighter fighter) {
         System.out.println("Character cannot become Paralyzed State.");
     }
     @Override
-    public void enraged(CharacterState state) {
+    public void enraged(Fighter fighter) {
         System.out.println("Character cannot become Enraged State.");
     }
     @Override
-    public void healed(CharacterState state) {
-        state.changeState(new NormalState());
-        System.out.println("Character is now in Normal State.");
-    }
-    public void checkStatus(CharacterState state, Attributes attributes) {
-        if(attributes.getHealth() >= 20)
-            healed(state); // Return to Normal State if health is above 20
-        System.out.println("");
+    public void burned(Fighter fighter) {
+        System.out.println("Character cannot become Burned State.");
     }
     @Override
-    public void stateEffect(Attributes attributes) {
-        attributes.setStrength(attributes.getStrength()*1.5);
-        attributes.setMagic(attributes.getMagic()*1.5);
+    public void healed(Fighter fighter) {
+        fighter.applyState(new NormalState());
+        System.out.println("Character is now in Normal State.");
+        fighter.getAttributes().setStrength(fighter.getAttributes().getStrength()/1.5);
+        fighter.getAttributes().setMagic(fighter.getAttributes().getMagic()/1.5);
+        firstTime = 0; // Reset firstTime when healed
+    }
+
+    public void checkStatus(Fighter fighter) {
+        if(fighter.getAttributes().getHealth() >= 20)
+            healed(fighter); // Return to Normal State if health is above 20
+    }
+    @Override
+    public void stateEffect(Fighter fighter) {
+        if(firstTime == 0) {    // Boosts attributes only once
+            fighter.getAttributes().setStrength(fighter.getAttributes().getStrength()*1.5);
+            fighter.getAttributes().setMagic(fighter.getAttributes().getMagic()*1.5);
+        }
+        firstTime++;
+        System.out.println("Status: Enraged (Magic and strength increased by 50%)");
     }
     @Override
     public String getStateName() {

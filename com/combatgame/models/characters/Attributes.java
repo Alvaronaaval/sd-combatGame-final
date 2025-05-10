@@ -28,7 +28,7 @@ public class Attributes {
 
     // setters
     public void setHealth(int health) {
-        this.health = Math.max(0, Math.min(10, health));                // All characters start with 100 health
+        this.health = Math.max(0, Math.min(100, health));                // All characters start with 100 health
     }
 
     public void setStrength(int strength) {

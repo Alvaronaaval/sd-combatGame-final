@@ -1,26 +1,38 @@
 package com.combatgame.models.characters;
 
 public class ParalyzedState implements CharacterState {
+    int paralysisCount = 0;
+    static final int maxParalysisCount = 1; // Number of turns before returning to Normal State
+
     @Override
-    public void wounded(CharacterState state) {
-        System.out.println("Character cannot become Wounded State.");
-    }
-    @Override
-    public void paralyzed(CharacterState state) {
+    public void paralyzed(Fighter fighter) {
         System.out.println("Character cannot become Paralyzed State.");
     }
     @Override
-    public void enraged(CharacterState state) {
+    public void enraged(Fighter fighter) {
         System.out.println("Character cannot become Enraged State.");
     }
     @Override
-    public void healed(CharacterState state) {
-        state.changeState(new NormalState());
-        System.out.println("Character is now in Normal State.");
+    public void burned(Fighter fighter) {
+        System.out.println("Character cannot become Burned State.");
     }
     @Override
-    public void stateEffect(Attributes attributes) {
-        
+    public void healed(Fighter fighter) {
+        fighter.applyState(new NormalState());
+        System.out.println("Character is now in Normal State.");
+        fighter.getSkipTurn() == false; // Disable skip turn
+        paralysisCount = 0; // Reset paralysis count after healing
+    }
+
+    @Override
+    public void checkStatus(Fighter fighter) {
+        if(paralysisCount >= maxParalysisCount)
+            healed(fighter); // Return to Normal State
+    }
+    @Override
+    public void stateEffect(Fighter fighter) {
+        fighter.getSkipTurn() == true;  // Enable skip turn
+        paralysisCount++;
     }
     @Override
     public String getStateName() {

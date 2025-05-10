@@ -1,12 +1,12 @@
 package com.combatgame.models.characters;
 
 public interface CharacterState {
-    void wounded(CharacterState state);
-    void paralyzed(CharacterState state);
-    void enraged(CharacterState state);
-    void healed(CharacterState state);
+    void paralyzed(Fighter fighter);
+    void enraged(Fighter fighter);
+    void burned(Fighter fighter);
+    void healed(Fighter fighter);
 
-    void checkStatus(CharacterState state, Attributes attributes);
-    void stateEffect(Attributes attributes);
+    void checkStatus(Fighter fighter);
+    void stateEffect(Fighter fighter);
     String getStateName();
 }

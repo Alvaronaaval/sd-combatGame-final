@@ -6,10 +6,20 @@ import com.combatgame.models.WorldEffect;
 public abstract class AbstractEnemy implements Fighter {
     protected Attributes attributes;
     protected WorldEffect worldEffect;
+    boolean skipTurn = false;
+
 
     public AbstractEnemy(WorldEffect worldEffect, Attributes attributes) {
         this.worldEffect = worldEffect;
         this.attributes = attributes;
+    }
+
+    public void applyState(CharacterState newState) {
+        this.state = newState;
+    }
+
+    public boolean getSkipTurn() {
+        return skipTurn;
     }
 
     public Attributes getAttributes() {

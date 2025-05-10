@@ -5,8 +5,9 @@ public interface Fighter {
     void receiveDamage(int damage);
     boolean isAlive();
     String getType();
-    int getHealth();
     Attributes getAttributes();
+    void applyState(CharacterState newState);
+    boolean getSkipTurn();
 }
 
 // interfaz que sirve para definir los métodos que deben implementar tanto los enemigos como los jugadores

@@ -4,6 +4,7 @@ public class Player implements Fighter {
 
     protected Attributes attributes; // player attributes
     private CharacterState state; // character state
+    boolean skipTurn = false; // skip turn flag
 
     public Player() {
         state = new NormalState(); //Default state
@@ -62,5 +63,29 @@ public class Player implements Fighter {
 
     public void applyState(CharacterState newState) {
         this.state = newState;
+    }
+
+    public boolean getSkipTurn() {
+        return skipTurn;
+    }
+
+    public void takeTurn() {
+
+    }
+
+    public void receiveDamage(int damage) {
+        
+    }
+
+    public boolean isAlive() {
+        return attributes.getHealth() > 0;
+    }
+
+    public String getType() {
+        return "Player";
+    }
+
+    public Attributes getAttributes() {
+        return attributes;
     }
 }
