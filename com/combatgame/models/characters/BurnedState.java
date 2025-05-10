@@ -1,6 +1,9 @@
 package com.combatgame.models.characters;
 
 public class BurnedState implements CharacterState {
+    int burnedCount = 0; // Counter for burn effect
+    int maxBurnedCount = 3; // Maximum number of burn effects
+
     @Override
     public void wounded(CharacterState state) {
         System.out.println("Character cannot become Wounded State.");
