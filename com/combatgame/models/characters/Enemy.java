@@ -1,4 +1,4 @@
-package com.combatgame.models.characters;
+/* package com.combatgame.models.characters;
 
 public interface Enemy {
     void takeTurn();
@@ -7,3 +7,7 @@ public interface Enemy {
     void receiveDamage(int damage);
     boolean isAlive();
 }
+
+*/
+
+// nueva interfaz: fighter que sirve para los enemigos y los players
