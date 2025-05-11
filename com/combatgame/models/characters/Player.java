@@ -1,6 +1,12 @@
 package com.combatgame.models.characters;
 
+
+import java.util.Scanner;
+
 public class Player implements Fighter {
+
+    Scanner scan = new Scanner(System.in);
+
 
     protected Attributes attributes; // player attributes
     private CharacterState state; // character state
@@ -51,7 +57,7 @@ public class Player implements Fighter {
             if(totalPoints != 0) System.out.println("\nThe 30 points have been distributed incorrectly. Please try again.");
             else System.out.println("\nThe 30 points have been distributed correctly.");
         }
-        scanner.close();
+        scan.close();
 
         attributes.setHealth(100);
         attributes.setStrength(strength);
