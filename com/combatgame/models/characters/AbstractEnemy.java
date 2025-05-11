@@ -1,6 +1,6 @@
 package com.combatgame.models.characters;
 
-import com.combatgame.models.Attributes;
+import com.combatgame.models.characters.Attributes;
 import com.combatgame.models.WorldEffect;
 
 public abstract class AbstractEnemy implements Fighter {
@@ -39,6 +39,7 @@ public abstract class AbstractEnemy implements Fighter {
     @Override
     public void receiveDamage(int damage) {
         int realDamage = Math.max(damage - attributes.getDefense(), 1);
-        attributes.getHealth() -= realDamage;
+        attributes.setHealth(attributes.getHealth() - realDamage);
+
     }
 }
