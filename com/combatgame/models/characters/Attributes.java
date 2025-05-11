@@ -50,4 +50,18 @@ public class Attributes {
     public void setSpeed(int speed) {
         this.speed = Math.max(0, Math.min(10, speed));                  // usa una validacion de rango 0-10
     }
+
+    public static Attributes randomAttributes() {                       // crea atributos aleatorios
+        java.util.Random r = new java.util.Random();
+        return new Attributes(
+                100,                    // health inicial siempre 100
+                r.nextInt(11),          // fuerza 0–10
+                r.nextInt(11),          // agilidad 0–10
+                r.nextInt(11),          // defensa 0–10
+                r.nextInt(11),          // magia 0–10
+                r.nextInt(11)           // velocidad 0–10
+        );
+    }
+
+
 }
