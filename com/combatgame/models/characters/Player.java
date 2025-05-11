@@ -4,7 +4,7 @@ public class Player implements Fighter {
 
     protected Attributes attributes; // player attributes
     private CharacterState state; // character state
-    boolean skipTurn = false; // skip turn flag
+    private boolean skipTurn = false; // skip turn flag
 
     public Player() {
         state = new NormalState(); //Default state
@@ -74,11 +74,11 @@ public class Player implements Fighter {
     }
 
     public void takeTurn() {
-
+        System.out.println("Player's turn.");       // Unfinished method
     }
 
     public void receiveDamage(int damage) {
-        
+        System.out.println("Receive damage.");      // Unfinished method
     }
 
     public boolean isAlive() {

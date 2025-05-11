@@ -3,7 +3,7 @@ import com.combatgame.models.Attributes;
 import com.combatgame.models.WorldEffect;
 
 public class NewWarrior extends AbstractEnemy {
-    public Warrior(WorldEffect worldEffect) {
+    public NewWarrior(WorldEffect worldEffect) {
         super(worldEffect, new Attributes(9, 5, 4, 2, 3));
     }
 

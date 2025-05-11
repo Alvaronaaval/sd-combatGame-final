@@ -6,7 +6,8 @@ import com.combatgame.models.WorldEffect;
 public abstract class AbstractEnemy implements Fighter {
     protected Attributes attributes;
     protected WorldEffect worldEffect;
-    boolean skipTurn = false;
+    protected boolean skipTurn = false;
+    protected CharacterState state;
 
 
     public AbstractEnemy(WorldEffect worldEffect, Attributes attributes) {
@@ -38,6 +39,6 @@ public abstract class AbstractEnemy implements Fighter {
     @Override
     public void receiveDamage(int damage) {
         int realDamage = Math.max(damage - attributes.getDefense(), 1);
-        attributes.getHealth(); -= realDamage;
+        attributes.getHealth() -= realDamage;
     }
 }
