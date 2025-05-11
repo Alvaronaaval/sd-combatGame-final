@@ -1,10 +1,10 @@
 package com.combatgame.models.characters;
-import com.combatgame.models.Attributes;
+import com.combatgame.models.characters.Attributes;
 import com.combatgame.models.WorldEffect;
 
 public class NewSorcerer extends AbstractEnemy {
     public NewSorcerer(WorldEffect worldEffect) {
-        super(worldEffect, new Attributes(2, 4, 3, 9, 4)); // fuerza, agilidad, defensa, magia, velocidad
+        super(worldEffect, new Attributes(2, 4, 3, 9, 4, 3)); // fuerza, agilidad, defensa, magia, velocidad
     }
 
     @Override
