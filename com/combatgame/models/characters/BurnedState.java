@@ -1,8 +1,8 @@
 package com.combatgame.models.characters;
 
 public class BurnedState implements CharacterState {
-    int burnedCount = 0; // Counter for burn effect
-    static int maxBurnedCount = 3; // Maximum number of burn effects
+    private int burnedCount = 0; // Counter for burn effect
+    private static int maxBurnedCount = 3; // Maximum number of burn effects
 
     @Override
     public void paralyzed(Fighter fighter) {

@@ -12,7 +12,7 @@ public class NormalState implements CharacterState {
         System.out.println("Character is now in Enraged State.");
     }
     @Override
-    void burned(Fighter fighter) {
+    public void burned(Fighter fighter) {
         fighter.applyState(new BurnedState());
         System.out.println("Character is now in Burned State.");
     }

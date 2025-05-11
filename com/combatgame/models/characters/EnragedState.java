@@ -1,7 +1,9 @@
 package com.combatgame.models.characters;
+import com.combatgame.models.characters.CharacterState;
+import com.combatgame.models.characters.Fighter;
 
-public class NormalState implements CharacterState {
-    int firstTime = 0;  // Variable to track if the state effect has been applied
+public class EnragedState implements CharacterState {
+    private int firstTime = 0;  // Variable to track if the state effect has been applied
 
     @Override
     public void paralyzed(Fighter fighter) {

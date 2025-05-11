@@ -10,7 +10,7 @@ public class Player implements Fighter {
         state = new NormalState(); //Default state
     }
 
-    private bool validStat(int stat) {
+    private boolean validStat(int stat) {
         if (stat < 0 || stat > 10) {
             System.out.println("Invalid stat value. Must be between 0 and 10.");
             return false;

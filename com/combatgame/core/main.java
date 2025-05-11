@@ -5,6 +5,7 @@ import com.combatgame.models.objects.Weapon;
 import com.combatgame.models.objects.Attack;
 import com.combatgame.models.objects.factory.AttackFactory;
 import com.combatgame.models.objects.factory.SwordAttackFactory;
+import com.combatgame.models.characters;
 
 public class main {
     public static void main(String[] args) {
