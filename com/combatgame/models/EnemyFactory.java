@@ -5,13 +5,13 @@ import com.combatgame.models.characters.*;
 import java.util.Random;
 
 public class EnemyFactory {
-    public static Enemy createEnemy(WorldEffect world) {
+    public static Fighter createEnemy(WorldEffect world) {
         int pick = new Random().nextInt(3);
         switch (pick) {
-            case 0: return new Warrior();
-            case 1: return new Sorcerer(world);
-            case 2: return new Mutant(world);
-            default: return new Warrior();
+            case 0: return new NewWarrior(world);
+            case 1: return new NewSorcerer(world);
+            case 2: return new NewMutant(world);
+            default: return new NewWarrior(world);
         }
     }
 }
