@@ -6,7 +6,6 @@ import com.combatgame.models.objects.Attack;
 
 public class ChargedShot implements Attack {
     private final ChargeableWeapon bow;
-    private String name = "Charged Shot";
 
     public ChargedShot(ChargeableWeapon bow) {
         this.bow = bow;
@@ -30,7 +29,7 @@ public class ChargedShot implements Attack {
     }
     @Override
     public String getName() {
-        return name;
+        return "Charged Shot";
     }
 
 }

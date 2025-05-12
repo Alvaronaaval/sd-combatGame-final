@@ -18,4 +18,8 @@ public class LightSlash implements Attack {
     public int getDamage() {
         return weapon.getDamage(); // Example: Light Slash adds 5 damage
     }
+    @Override
+    public String getName() {
+        return "Light Slash";
+    }
 }

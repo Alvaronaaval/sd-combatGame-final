@@ -3,7 +3,7 @@ import com.combatgame.models.objects.Weapon;
 import com.combatgame.models.objects.Attack;
 
 public class  Slash implements Attack {
-    private Weapon weapon;
+    private final Weapon weapon;
 
     public Slash(Weapon weapon) {
         this.weapon = weapon;
@@ -17,5 +17,9 @@ public class  Slash implements Attack {
     @Override
     public int getDamage() {
         return weapon.getDamage() + 2; // Slash adds 2 damage
+    }
+    @Override
+    public String getName() {
+        return "Slash";
     }
 }
