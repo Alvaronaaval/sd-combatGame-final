@@ -1,13 +1,21 @@
 package com.combatgame.models.characters;
+import com.combatgame.models.objects.Attack;
+import com.combatgame.models.objects.Weapon;
 
 public interface Fighter {
     void takeTurn();
-    void receiveDamage(int damage);
+    int receiveDamage(Attack attack, Fighter opponent);
     boolean isAlive();
     String getType();
+
     Attributes getAttributes();
-    void applyState(CharacterState newState);
     boolean getSkipTurn();
+    Weapon getWeapon();
+    Attack getPrimaryAttack();
+    Attack getSecondaryAttack();
+
+    void setWeapon();
+    void applyState(CharacterState newState);
     void setSkipTurn(boolean skipTurn);
 }
 

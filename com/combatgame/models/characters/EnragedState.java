@@ -24,6 +24,7 @@ public class EnragedState implements CharacterState {
         firstTime = 0; // Reset firstTime when healed
     }
 
+    @Override
     public void checkStatus(Fighter fighter) {
         if(fighter.getAttributes().getHealth() >= 20)
             healed(fighter); // Return to Normal State if health is above 20

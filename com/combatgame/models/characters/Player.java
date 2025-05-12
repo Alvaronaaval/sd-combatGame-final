@@ -1,16 +1,25 @@
 package com.combatgame.models.characters;
-
-
+import com.combatgame.models.objects.Attack;
+import com.combatgame.models.objects.DamageType;
+import com.combatgame.models.objects.Weapon;
+import com.combatgame.models.objects.WeaponBow;
+import com.combatgame.models.objects.WeaponDagger;
+import com.combatgame.models.objects.WeaponStaff;
+import com.combatgame.models.objects.WeaponSword;
+import com.combatgame.models.objects.factory.AttackFactory;
+import com.combatgame.models.objects.factory.BowAttackFactory;
+import com.combatgame.models.objects.factory.DaggerAttackFactory;
+import com.combatgame.models.objects.factory.StaffAttackFactory;
+import com.combatgame.models.objects.factory.SwordAttackFactory;
 import java.util.Scanner;
 
 public class Player implements Fighter {
-
-    Scanner scan = new Scanner(System.in);
-
-
     protected Attributes attributes; // player attributes
     private CharacterState state; // character state
     private boolean skipTurn = false; // skip turn flag
+    private Weapon weapon; // player weapon
+    private Attack primaryAttack; // player attack
+    private Attack secondaryAttack; // player attack
 
     public Player() {
         state = new NormalState(); //Default state
@@ -67,35 +76,82 @@ public class Player implements Fighter {
         attributes.setSpeed(speed);
     }
 
+    @Override
+    public void setWeapon() {
+        Scanner scan = new Scanner(System.in);
+        AttackFactory factory;
+        System.out.println("Select a weapon: ");
+        System.out.println("1. Sword");
+        System.out.println("2. Dagger");
+        System.out.println("3. Bow");
+        System.out.println("4. Staff");
+        int choice = scan.nextInt();
+        scan.close();
+        switch(choice) {
+            case 1:
+                weapon = new WeaponSword();
+                factory = new SwordAttackFactory();
+                System.out.println("Sword selected.");
+                break;
+            case 2:
+                weapon = new WeaponDagger();
+                factory = new DaggerAttackFactory();
+                System.out.println("Dagger selected.");
+                break;
+            case 3:
+                weapon = new WeaponBow();
+                factory = new BowAttackFactory();
+                System.out.println("Bow selected.");
+                break;
+            case 4:
+                weapon = new WeaponStaff();
+                factory = new StaffAttackFactory();
+                System.out.println("Staff selected.");
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to Sword.");
+                weapon = new WeaponSword();
+                factory = new SwordAttackFactory();
+                break;
+        }
+        primaryAttack = factory.createPrimaryAttack(weapon);
+        secondaryAttack = factory.createSecondaryAttack(weapon);
+    }
+    @Override public String getType() { return "Player"; }
+    @Override public Attributes getAttributes() { return attributes; }
+    @Override public boolean getSkipTurn() { return skipTurn; }
+    @Override public Weapon getWeapon() { return weapon; }
+    @Override public Attack getPrimaryAttack() { return primaryAttack; }
+    @Override public Attack getSecondaryAttack() { return secondaryAttack; }
+
+    @Override
     public void applyState(CharacterState newState) {
         this.state = newState;
     }
 
-    public boolean getSkipTurn() {
-        return skipTurn;
-    }
-
+    @Override
     public void setSkipTurn(boolean skipTurn) {
         this.skipTurn = skipTurn;
     }
 
+    @Override
     public void takeTurn() {
         System.out.println("Player's turn.");       // Unfinished method
     }
 
-    public void receiveDamage(int damage) {
-        System.out.println("Receive damage.");      // Unfinished method
+    @Override
+    public int receiveDamage(Attack attack, Fighter opponent) { // Receive damage from opponent
+        int damageTaken = 0;
+        if(opponent.getWeapon().getDamageType() == DamageType.PHYSICAL) {
+            damageTaken = (attack.getDamage() + opponent.getAttributes().getStrength()*2) - attributes.getDefense();
+        } else {
+            damageTaken = (attack.getDamage() + opponent.getAttributes().getMagic()*2) - (attributes.getDefense()*50)/100;
+        }
+        return damageTaken;
     }
 
+    @Override
     public boolean isAlive() {
         return attributes.getHealth() > 0;
-    }
-
-    public String getType() {
-        return "Player";
-    }
-
-    public Attributes getAttributes() {
-        return attributes;
     }
 }

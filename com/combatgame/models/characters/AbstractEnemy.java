@@ -1,7 +1,8 @@
 package com.combatgame.models.characters;
 
-import com.combatgame.models.characters.Attributes;
 import com.combatgame.models.WorldEffect;
+import com.combatgame.models.objects.Attack;
+import com.combatgame.models.objects.DamageType;
 
 public abstract class AbstractEnemy implements Fighter {
     protected Attributes attributes;
@@ -37,9 +38,13 @@ public abstract class AbstractEnemy implements Fighter {
     }
 
     @Override
-    public void receiveDamage(int damage) {
-        int realDamage = Math.max(damage - attributes.getDefense(), 1);
-        attributes.setHealth(attributes.getHealth() - realDamage);
-
+    public int receiveDamage(Attack attack, Fighter opponent) { // Receive damage from opponent
+        int damageTaken = 0;
+        if(opponent.getWeapon().getDamageType() == DamageType.PHYSICAL) {
+            damageTaken = (attack.getDamage() + opponent.getAttributes().getStrength()*2) - attributes.getDefense();
+        } else {
+            damageTaken = (attack.getDamage() + opponent.getAttributes().getMagic()*2) - (attributes.getDefense()*50)/100;
+        }
+        return damageTaken;
     }
 }

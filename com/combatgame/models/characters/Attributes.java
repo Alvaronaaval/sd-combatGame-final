@@ -62,6 +62,4 @@ public class Attributes {
                 r.nextInt(11)           // velocidad 0–10
         );
     }
-
-
 }
