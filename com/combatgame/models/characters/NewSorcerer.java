@@ -37,6 +37,16 @@ public class NewSorcerer extends AbstractEnemy {
         }
     }
 
+    public void randomizeAttack() {
+        java.util.Random r = new java.util.Random();
+        int randomAttack = r.nextInt(2); // 0 or 1
+        if (randomAttack == 0) {
+            primaryAttack.executeAttack();
+        } else {
+            secondaryAttack.executeAttack();
+        }
+    }
+
     @Override
     public String getType() {
         return "Sorcerer";
