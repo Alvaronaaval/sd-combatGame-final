@@ -52,6 +52,10 @@ public class Player implements Fighter, Subject  {
         System.out.println("Player's turn.");       // Unfinished method
     }
 
+    public void checkStatusEffect(Fighter opponent, Attack attack) {
+        
+    }
+
     @Override
     public void receiveDamage(Attack attack, Fighter opponent) { // Receive damage from opponent
         int damageTaken = 0;
@@ -60,7 +64,6 @@ public class Player implements Fighter, Subject  {
         } else {
             damageTaken = (attack.getDamage() + opponent.getAttributes().getMagic()*2) - (attributes.getDefense()*50)/100;
         }
-        //  return damageTaken;
     }
 
     @Override
