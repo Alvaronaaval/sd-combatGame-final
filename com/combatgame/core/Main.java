@@ -25,11 +25,25 @@ public class Main {
 
         // Now you can display the player's selected weapon and stats
         System.out.println("Player selected: " + player.getWeapon().getName());
+        System.out.println("Health: " + player.getAttributes().getHealth());
         System.out.println("Strength: " + player.getAttributes().getStrength());
         System.out.println("Speed: " + player.getAttributes().getSpeed());
         System.out.println("Defense: " + player.getAttributes().getDefense());
         System.out.println("Magic: " + player.getAttributes().getMagic());
         System.out.println("Agility: " + player.getAttributes().getAgility());
+
+        // Display enemy stats
+        System.out.println("Enemy selected: " + enemy.getWeapon().getName());
+        System.out.println("Health: " + enemy.getAttributes().getHealth());
+        System.out.println("Strength: " + enemy.getAttributes().getStrength());
+        System.out.println("Speed: " + enemy.getAttributes().getSpeed());
+        System.out.println("Defense: " + enemy.getAttributes().getDefense());
+        System.out.println("Magic: " + enemy.getAttributes().getMagic());
+        System.out.println("Agility: " + enemy.getAttributes().getAgility());
+
+        // Step 4: Start the battle
+
     }
+
 }
 
