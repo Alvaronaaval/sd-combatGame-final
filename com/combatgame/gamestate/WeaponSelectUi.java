@@ -1,10 +1,8 @@
 package com.combatgame.gamestate;
 
-import com.combatgame.models.characters.Fighter;
 import com.combatgame.models.characters.Player;
 import com.combatgame.models.objects.*;
 import com.combatgame.models.objects.factory.*;
-
 import java.util.Scanner;
 
 public class WeaponSelectUi {
@@ -22,7 +20,6 @@ public class WeaponSelectUi {
         System.out.println("3. Bow");
         System.out.println("4. Staff");
         int choice = scan.nextInt();
-        scan.close();
         switch (choice) {
             case 1:
                 Player.setWeapon(new WeaponSword());
