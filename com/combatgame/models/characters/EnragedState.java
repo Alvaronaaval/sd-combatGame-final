@@ -1,6 +1,4 @@
 package com.combatgame.models.characters;
-import com.combatgame.models.characters.CharacterState;
-import com.combatgame.models.characters.Fighter;
 
 public class EnragedState implements CharacterState {
     private int firstTime = 0;  // Variable to track if the state effect has been applied
@@ -21,8 +19,8 @@ public class EnragedState implements CharacterState {
     public void healed(Fighter fighter) {
         fighter.applyState(new NormalState());
         System.out.println("Character is now in Normal State.");
-        fighter.getAttributes().setStrength(fighter.getAttributes().getStrength()/1.5);
-        fighter.getAttributes().setMagic(fighter.getAttributes().getMagic()/1.5);
+        fighter.getAttributes().setStrength((fighter.getAttributes().getStrength()*50)/100);
+        fighter.getAttributes().setMagic((fighter.getAttributes().getMagic()*50)/100);
         firstTime = 0; // Reset firstTime when healed
     }
 
@@ -33,8 +31,8 @@ public class EnragedState implements CharacterState {
     @Override
     public void stateEffect(Fighter fighter) {
         if(firstTime == 0) {    // Boosts attributes only once
-            fighter.getAttributes().setStrength(fighter.getAttributes().getStrength()*1.5);
-            fighter.getAttributes().setMagic(fighter.getAttributes().getMagic()*1.5);
+            fighter.getAttributes().setStrength((fighter.getAttributes().getStrength()*50)/100);
+            fighter.getAttributes().setMagic((fighter.getAttributes().getMagic()*50)/100);
         }
         firstTime++;
         System.out.println("Status: Enraged (Magic and strength increased by 50%)");
