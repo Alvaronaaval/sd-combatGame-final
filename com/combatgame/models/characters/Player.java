@@ -2,19 +2,8 @@ package com.combatgame.models.characters;
 import com.combatgame.models.objects.Attack;
 import com.combatgame.models.objects.DamageType;
 import com.combatgame.models.objects.Weapon;
-import com.combatgame.models.objects.WeaponBow;
-import com.combatgame.models.objects.WeaponDagger;
-import com.combatgame.models.objects.WeaponStaff;
-import com.combatgame.models.objects.WeaponSword;
-import com.combatgame.models.objects.factory.AttackFactory;
-import com.combatgame.models.objects.factory.BowAttackFactory;
-import com.combatgame.models.objects.factory.DaggerAttackFactory;
-import com.combatgame.models.objects.factory.StaffAttackFactory;
-import com.combatgame.models.objects.factory.SwordAttackFactory;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Player implements Fighter, Subject  {
     protected Attributes attributes; // player attributes
@@ -28,49 +17,8 @@ public class Player implements Fighter, Subject  {
         this.state = new NormalState(); //Default state
     }
 
-    private boolean validStat(int stat) {
-        if (stat < 0 || stat > 10) {
-            System.out.println("Invalid stat value. Must be between 0 and 10.");
-            return false;
-        }
-        return true;
-    }
-
-    public void setPlayerStats() {
-        Scanner scan = new Scanner(System.in);
-		int strength = 0, agility = 0, defense = 0, magic = 0, speed = 0;
-        int totalPoints = 30;
-        
-        System.out.println("Distribute a total of 30 points to your character (0-10 per stat): ");
-        while(totalPoints != 0) {
-            totalPoints = 30;
-            do {
-                System.out.printf("\nStrength: ");
-                strength = scan.nextInt();
-            } while(!validStat(strength));
-            do {
-                System.out.printf("\nDefense: ");
-                defense = scan.nextInt();
-            } while(!validStat(defense));
-            do {
-                System.out.printf("\nSpeed: ");
-                speed = scan.nextInt();
-            } while(!validStat(speed));
-            do {
-                System.out.printf("\nAgility: ");
-                agility = scan.nextInt();
-            } while(!validStat(agility));
-            do {
-                System.out.printf("\nMagic: ");
-                magic = scan.nextInt();
-            } while(!validStat(magic));
-
-            totalPoints = totalPoints - (strength + agility + defense + magic + speed);
-            if(totalPoints != 0) System.out.println("\nThe 30 points have been distributed incorrectly. Please try again.");
-            else System.out.println("\nThe 30 points have been distributed correctly.");
-        }
-        this.attributes = new Attributes(100, strength, agility, defense, magic, speed);
-
+    public void setAttributes(int health, int strength, int agility, int defense, int magic, int speed) {
+        this.attributes = new Attributes(health, strength, agility, defense, magic, speed);
     }
 
     public void setWeapon(Weapon weapon) {
