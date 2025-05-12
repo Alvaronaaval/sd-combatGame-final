@@ -25,7 +25,7 @@ public class EnragedState implements CharacterState {
     }
 
     @Override
-    public void checkStatus(Fighter fighter) {
+    public void checkStatus(Fighter fighter, Fighter opponent) {
         if(fighter.getAttributes().getHealth() >= 20)
             healed(fighter); // Return to Normal State if health is above 20
     }
