@@ -6,7 +6,7 @@ public interface CharacterState {
     void burned(Fighter fighter);
     void healed(Fighter fighter);
 
-    void checkStatus(Fighter fighter);
+    void checkStatus(Fighter fighter, Fighter opponent);
     void stateEffect(Fighter fighter);
     String getStateName();
 }

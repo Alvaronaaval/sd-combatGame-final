@@ -26,6 +26,11 @@ public abstract class AbstractEnemy implements Fighter {
     }
 
     @Override
+    public CharacterState getState() {
+        return state;
+    }
+
+    @Override
     public void setSkipTurn(boolean skipTurn) {
         this.skipTurn = skipTurn;
     }

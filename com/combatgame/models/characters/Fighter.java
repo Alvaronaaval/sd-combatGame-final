@@ -15,6 +15,7 @@ public interface Fighter {
     Attack getPrimaryAttack();
     Attack getSecondaryAttack();
     Weapon getWeapon();
+    CharacterState getState();
 
     void applyState(CharacterState newState);
     void setSkipTurn(boolean skipTurn);

@@ -3,7 +3,6 @@ package com.combatgame.gamestate;
 import com.combatgame.models.characters.Fighter;
 import com.combatgame.models.objects.Attack;
 import com.combatgame.models.objects.DamageType;
-import java.awt.Checkbox;
 
 public class CombatManager {
 
@@ -39,6 +38,8 @@ public class CombatManager {
         // If not dodged, apply the damage
         defender.receiveDamage(attack, attacker);
         defender.checkStatusEffect(attacker, attack);
+        defender.getState().checkStatus(defender, attacker);
+        defender.getState().stateEffect(defender);
 
         System.out.println(attacker.getType() + " attacked " + defender.getType() + " with " + attack.getName() + " dealing " + damage + " damage.");
     }

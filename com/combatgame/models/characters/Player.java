@@ -36,6 +36,7 @@ public class Player implements Fighter, Subject  {
     @Override public Weapon getWeapon() { return weapon; }
     @Override public Attack getPrimaryAttack() { return primaryAttack; }
     @Override public Attack getSecondaryAttack() { return secondaryAttack; }
+    @Override public CharacterState getState() { return state; }
 
     @Override
     public void applyState(CharacterState newState) {
@@ -53,13 +54,7 @@ public class Player implements Fighter, Subject  {
     }
 
     public void checkStatusEffect(Fighter opponent, Attack attack) {
-        if(opponent.getWeapon().getName() == "Staff") {
-            if(opponent.getPrimaryAttack().getName() == "Fireball") {
-                applyState(new BurnedState());
-            } else if(opponent.getPrimaryAttack().getName() == "IceShard") {
-                applyState(new ParalyzedState());
-            }
-        }
+        
     }
 
     @Override

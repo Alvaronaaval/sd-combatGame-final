@@ -25,7 +25,7 @@ public class ParalyzedState implements CharacterState {
     }
 
     @Override
-    public void checkStatus(Fighter fighter) {
+    public void checkStatus(Fighter fighter, Fighter opponent) {
         if(paralysisCount >= maxParalysisCount)
             healed(fighter); // Return to Normal State
     }
