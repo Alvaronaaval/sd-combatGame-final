@@ -1,6 +1,12 @@
 package com.combatgame.models.objects;
 
-public class WeaponBow extends AbstractWeapon {
+public class WeaponBow extends AbstractWeapon implements ChargeableWeapon {
+    private boolean charged = false;
+
+    public void charge() { this.charged = true; }
+    public void uncharge() { this.charged = false; }
+    public boolean isCharged() { return charged; }
+
     public WeaponBow() {
         this.name = "Bow";
         this.damage = 15;

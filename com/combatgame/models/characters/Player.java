@@ -1,5 +1,5 @@
 package com.combatgame.models.characters;
-
+import com.combatgame.models.objects.Weapon;
 
 import java.util.Scanner;
 
@@ -11,6 +11,7 @@ public class Player implements Fighter {
     protected Attributes attributes; // player attributes
     private CharacterState state; // character state
     private boolean skipTurn = false; // skip turn flag
+    private Weapon weapon; // player weapon
 
     public Player() {
         state = new NormalState(); //Default state
@@ -23,7 +24,12 @@ public class Player implements Fighter {
         }
         return true;
     }
-
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+    public Weapon getWeapon() {
+        return weapon;
+    }
     public void setPlayerStats() {
         Scanner scan = new Scanner(System.in);
 		int strength = 0, agility = 0, defense = 0, magic = 0, speed = 0;

@@ -4,7 +4,6 @@ import com.combatgame.models.objects.Attack;
 
 public class HeavySwing implements Attack {
     private Weapon weapon;
-
     public HeavySwing(Weapon weapon) {
         this.weapon = weapon;
     }
