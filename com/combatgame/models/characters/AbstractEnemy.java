@@ -8,8 +8,7 @@ public abstract class AbstractEnemy implements Fighter {
     protected Attributes attributes;
     protected WorldEffect worldEffect;
     protected boolean skipTurn = false;
-    protected CharacterState state;
-    
+    protected CharacterState state;    
 
     public AbstractEnemy(WorldEffect worldEffect, Attributes attributes) {
         this.worldEffect = worldEffect;

@@ -8,6 +8,7 @@ public interface Fighter {
     boolean isAlive();
     String getType();
     boolean isFaster(Fighter opponent);
+    void checkStatusEffect(Fighter opponent, Attack attack);
 
     Attributes getAttributes();
     boolean getSkipTurn();
