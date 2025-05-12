@@ -7,27 +7,22 @@ import com.combatgame.models.objects.factory.SwordAttackFactory;
 import com.combatgame.models.EnemyFactory;
 import com.combatgame.models.WorldEffect;
 import com.combatgame.models.characters.Fighter;
-
+import com.combatgame.gamestate.WeaponSelectUi;
 
 public class main {
     public static void main(String[] args) {
-        WeaponSword sword = new WeaponSword();
-        sword.displayIllustration();
-        System.out.println("Weapon Name: " + sword.getName());
-        System.out.println("Weapon Base Damage: " + sword.getDamage());
-        System.out.println("Damage Type: " + sword.getDamageType());
+        WeaponSelectUi weaponSelect = new WeaponSelectUi();
 
-        AttackFactory swordFactory = new SwordAttackFactory();
-
-        Attack PlayerPrimary = swordFactory.createPrimaryAttack(sword);
-        Attack PlayerSecondary = swordFactory.createSecondaryAttack(sword);
 
         Player player = new Player();
         player.setPlayerStats();
-        player.setWeapon();
+        weaponSelect.WeaponSelectMenu(player);
 
-        PlayerSecondary.executeAttack();
-        System.out.println("Damage: " + PlayerSecondary.getDamage());
+        // Mostrar weapon y stats
+        System.out.println("Player weapon: " + player.getWeapon().getName());
+        System.out.println("Player primary attack: " + player.getPrimaryAttack().getName());
+        System.out.println("Player secondary attack: " + player.getSecondaryAttack().getName());
+
 
         // Mundo seleccionado
         WorldEffect currentWorld = WorldEffect.JUNGLE;

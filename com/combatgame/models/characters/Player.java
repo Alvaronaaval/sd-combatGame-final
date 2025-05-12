@@ -73,46 +73,16 @@ public class Player implements Fighter, Subject  {
 
     }
 
-    public void setWeapon() {
-        Scanner scan = new Scanner(System.in);
-        AttackFactory factory;
-        System.out.println("Select a weapon: ");
-        System.out.println("1. Sword");
-        System.out.println("2. Dagger");
-        System.out.println("3. Bow");
-        System.out.println("4. Staff");
-        int choice = scan.nextInt();
-        scan.close();
-        switch(choice) {
-            case 1:
-                weapon = new WeaponSword();
-                factory = new SwordAttackFactory();
-                System.out.println("Sword selected.");
-                break;
-            case 2:
-                weapon = new WeaponDagger();
-                factory = new DaggerAttackFactory();
-                System.out.println("Dagger selected.");
-                break;
-            case 3:
-                weapon = new WeaponBow();
-                factory = new BowAttackFactory();
-                System.out.println("Bow selected.");
-                break;
-            case 4:
-                weapon = new WeaponStaff();
-                factory = new StaffAttackFactory();
-                System.out.println("Staff selected.");
-                break;
-            default:
-                System.out.println("Invalid choice. Defaulting to Sword.");
-                weapon = new WeaponSword();
-                factory = new SwordAttackFactory();
-                break;
-        }
-        primaryAttack = factory.createPrimaryAttack(weapon);
-        secondaryAttack = factory.createSecondaryAttack(weapon);
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
+    public void setPrimaryAttack(Attack primaryAttack) {
+        this.primaryAttack = primaryAttack;
+    }
+    public void setSecondaryAttack(Attack secondaryAttack) {
+        this.secondaryAttack = secondaryAttack;
+    }
+
     @Override public String getType() { return "Player"; }
     @Override public Attributes getAttributes() { return attributes; }
     @Override public boolean getSkipTurn() { return skipTurn; }

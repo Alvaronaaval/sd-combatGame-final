@@ -6,6 +6,7 @@ import com.combatgame.models.objects.Attack;
 
 public class ChargedShot implements Attack {
     private final ChargeableWeapon bow;
+    private String name = "Charged Shot";
 
     public ChargedShot(ChargeableWeapon bow) {
         this.bow = bow;
@@ -19,6 +20,7 @@ public class ChargedShot implements Attack {
         } else {
             System.out.println("Executing Charged Shot! Charging...");
             bow.charge();
+
         }
     }
 
@@ -26,4 +28,9 @@ public class ChargedShot implements Attack {
     public int getDamage() {
         return bow.getDamage() + 15; // Charged Shot adds more damage
     }
+    @Override
+    public String getName() {
+        return name;
+    }
+
 }
