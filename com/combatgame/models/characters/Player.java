@@ -66,8 +66,8 @@ public class Player implements Fighter {
             if(totalPoints != 0) System.out.println("\nThe 30 points have been distributed incorrectly. Please try again.");
             else System.out.println("\nThe 30 points have been distributed correctly.");
         }
-        scan.close();
         this.attributes = new Attributes(100, strength, agility, defense, magic, speed);
+
     }
 
     public void setWeapon() {

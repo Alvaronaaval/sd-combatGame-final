@@ -1,12 +1,12 @@
 package com.combatgame.core;
-import com.combatgame.models.EnemyFactory;
-import com.combatgame.models.WorldEffect;
-import com.combatgame.models.characters.Fighter;
 import com.combatgame.models.characters.Player;
 import com.combatgame.models.objects.Attack;
 import com.combatgame.models.objects.WeaponSword;
 import com.combatgame.models.objects.factory.AttackFactory;
 import com.combatgame.models.objects.factory.SwordAttackFactory;
+import com.combatgame.models.EnemyFactory;
+import com.combatgame.models.WorldEffect;
+import com.combatgame.models.characters.Fighter;
 
 
 public class main {
