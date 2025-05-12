@@ -4,7 +4,7 @@ import com.combatgame.models.objects.Weapon;
 
 public interface Fighter {
     void takeTurn();
-    int receiveDamage(Attack attack, Fighter opponent);
+    void receiveDamage(Attack attack, Fighter opponent);
     boolean isAlive();
     String getType();
 
