@@ -6,6 +6,8 @@ import com.combatgame.gamestate.StatSelectUI;
 import com.combatgame.gamestate.WeaponSelectUi;
 import com.combatgame.gamestate.RandomEnemyGenerator;
 import com.combatgame.models.characters.Fighter;
+import com.combatgame.gamestate.CombatManager;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,9 +43,91 @@ public class Main {
         System.out.println("Magic: " + enemy.getAttributes().getMagic());
         System.out.println("Agility: " + enemy.getAttributes().getAgility());
 
-        // Step 4: Start the battle
+        // Step 4: Start combat (simplified)
+        startCombat(player, enemy);
 
     }
 
+    // Method to start combat between player and enemy
+    private static void startCombat(Fighter player, Fighter enemy) {
+        // Create an instance of the CombatManager to handle combat logic
+        CombatManager combatManager = new CombatManager();
+
+        // Simple combat loop (player vs enemy)
+        System.out.println("\nCombat begins!");
+
+        // Create a scanner for user input (do not close it here)
+        Scanner scanner = new Scanner(System.in);
+
+        // While both are alive, continue the combat
+        while (player.isAlive() && enemy.isAlive()) {
+            // Display status
+            System.out.println("\nPlayer Health: " + player.getAttributes().getHealth());
+            System.out.println("Enemy Health: " + enemy.getAttributes().getHealth());
+
+            // Prompt player to choose an attack (primary or secondary)
+            int attackChoice = getValidAttackChoice(scanner); // Get user input for the attack
+
+            // Determine who attacks first based on speed
+            if (player.isFaster(enemy)) {
+                // Player attacks first, perform selected attack
+                if (attackChoice == 1) {
+                    combatManager.performAttack(player, enemy, 1); // Player uses primary attack
+                } else {
+                    combatManager.performAttack(player, enemy, 2); // Player uses secondary attack
+                }
+                if (enemy.isAlive()) {
+                    combatManager.performAttack(enemy, player, 1); // Enemy attacks back
+                }
+            } else {
+                // Enemy attacks first
+                combatManager.performAttack(enemy, player, 1); // Enemy uses primary attack
+                if (player.isAlive()) {
+                    // Prompt the player to choose their attack after the enemy's turn
+                    System.out.println("It's your turn!");
+                    attackChoice = getValidAttackChoice(scanner); // Get user input for the attack
+                    if (attackChoice == 1) {
+                        combatManager.performAttack(player, enemy, 1); // Player uses primary attack
+                    } else {
+                        combatManager.performAttack(player, enemy, 2); // Player uses secondary attack
+                    }
+                }
+            }
+        }
+
+        // Determine the outcome
+        if (player.isAlive()) {
+            System.out.println("Player wins!");
+        } else {
+            System.out.println("Enemy wins!");
+        }
+
+        // Close the scanner here after the combat ends
+        scanner.close();
+    }
+
+    // Helper method to get a valid attack choice from the user
+    private static int getValidAttackChoice(Scanner scanner) {
+        int attackChoice = 0;
+        while (attackChoice != 1 && attackChoice != 2) {
+            System.out.println("Choose your attack:");
+            System.out.println("1. Primary Attack");
+            System.out.println("2. Secondary Attack");
+
+            if (scanner.hasNextInt()) {
+                attackChoice = scanner.nextInt();
+                scanner.nextLine(); // Clear the buffer to consume the newline character
+                if (attackChoice != 1 && attackChoice != 2) {
+                    System.out.println("Invalid input. Please choose 1 or 2.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number (1 or 2).");
+                scanner.nextLine(); // Consume the invalid input (the non-numeric input)
+            }
+        }
+        return attackChoice;
+    }
 }
+
+
 
