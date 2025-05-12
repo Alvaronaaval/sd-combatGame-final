@@ -11,9 +11,12 @@ import com.combatgame.models.objects.factory.BowAttackFactory;
 import com.combatgame.models.objects.factory.DaggerAttackFactory;
 import com.combatgame.models.objects.factory.StaffAttackFactory;
 import com.combatgame.models.objects.factory.SwordAttackFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Player implements Fighter {
+public class Player implements Fighter, Subject  {
     protected Attributes attributes; // player attributes
     private CharacterState state; // character state
     private boolean skipTurn = false; // skip turn flag
@@ -140,7 +143,7 @@ public class Player implements Fighter {
         } else {
             damageTaken = (attack.getDamage() + opponent.getAttributes().getMagic()*2) - (attributes.getDefense()*50)/100;
         }
-        //return damageTaken;
+        //  return damageTaken;
     }
 
     @Override
@@ -158,4 +161,31 @@ public class Player implements Fighter {
     public boolean isAlive() {
         return attributes.getHealth() > 0;
     }
+
+    private List<Observer> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyEnemyDefeated() {
+        for (Observer o : observers) {
+            o.onEnemyDefeated();
+        }
+    }
+
+    // usar este metodo para notificar a los observadores cuando un enemigo es derrotado
+    public void onEnemyKilled(Fighter enemy) {
+        if (!enemy.isAlive()) {
+            notifyEnemyDefeated();
+        }
+    }
+
 }
