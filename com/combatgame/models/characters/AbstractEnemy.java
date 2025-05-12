@@ -65,14 +65,4 @@ public abstract class AbstractEnemy implements Fighter {
             return Math.random() < 0.5; // Randomly decide who goes first
         }
     }
-
-    public void checkStatusEffect(Fighter opponent, Attack attack) {
-        if(opponent.getWeapon().getName() == "Staff") {
-            if(opponent.getPrimaryAttack().getName() == "Fireball") {
-                applyState(new BurnedState());
-            } else if(opponent.getPrimaryAttack().getName() == "IceShard") {
-                applyState(new ParalyzedState());
-            }
-        }
-    }
 }
