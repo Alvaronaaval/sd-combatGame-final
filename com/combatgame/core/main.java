@@ -1,8 +1,6 @@
 package com.combatgame.core;
 import com.combatgame.models.characters.Player;
 import com.combatgame.models.objects.Attack;
-import com.combatgame.models.objects.Weapon;
-import com.combatgame.models.objects.WeaponBow;
 import com.combatgame.models.objects.WeaponSword;
 import com.combatgame.models.objects.factory.AttackFactory;
 import com.combatgame.models.objects.factory.SwordAttackFactory;
@@ -22,8 +20,8 @@ public class main {
         Attack PlayerSecondary = swordFactory.createSecondaryAttack(sword);
 
         Player player = new Player();
-        player.setWeapon(sword);
         player.setPlayerStats();
+        player.setWeapon();
 
         PlayerSecondary.executeAttack();
         System.out.println("Damage: " + PlayerSecondary.getDamage());

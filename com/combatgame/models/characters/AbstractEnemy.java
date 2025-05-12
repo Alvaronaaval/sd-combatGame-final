@@ -9,25 +9,29 @@ public abstract class AbstractEnemy implements Fighter {
     protected WorldEffect worldEffect;
     protected boolean skipTurn = false;
     protected CharacterState state;
-
+    
 
     public AbstractEnemy(WorldEffect worldEffect, Attributes attributes) {
         this.worldEffect = worldEffect;
         this.attributes = attributes;
     }
 
+    @Override
     public void applyState(CharacterState newState) {
         this.state = newState;
     }
 
+    @Override
     public boolean getSkipTurn() {
         return skipTurn;
     }
 
+    @Override
     public void setSkipTurn(boolean skipTurn) {
         this.skipTurn = skipTurn;
     }
 
+    @Override
     public Attributes getAttributes() {
         return attributes;
     }

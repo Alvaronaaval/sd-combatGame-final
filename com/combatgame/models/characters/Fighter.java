@@ -10,11 +10,10 @@ public interface Fighter {
 
     Attributes getAttributes();
     boolean getSkipTurn();
-    Weapon getWeapon();
     Attack getPrimaryAttack();
     Attack getSecondaryAttack();
+    Weapon getWeapon();
 
-    void setWeapon();
     void applyState(CharacterState newState);
     void setSkipTurn(boolean skipTurn);
 }
