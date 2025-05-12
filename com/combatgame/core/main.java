@@ -4,6 +4,9 @@ import com.combatgame.models.objects.Attack;
 import com.combatgame.models.objects.WeaponSword;
 import com.combatgame.models.objects.factory.AttackFactory;
 import com.combatgame.models.objects.factory.SwordAttackFactory;
+import com.combatgame.models.EnemyFactory;
+import com.combatgame.models.WorldEffect;
+import com.combatgame.models.characters.Fighter;
 
 
 public class main {
@@ -25,5 +28,21 @@ public class main {
 
         PlayerSecondary.executeAttack();
         System.out.println("Damage: " + PlayerSecondary.getDamage());
+
+        // Mundo seleccionado
+        WorldEffect currentWorld = WorldEffect.JUNGLE;
+
+        // Prueba de 3 enemigos creados aleatoriamente en ese mundo
+        for (int i = 0; i < 3; i++) {
+            Fighter enemy = EnemyFactory.createEnemy(currentWorld);
+            System.out.println("Enemy type: " + enemy.getType());
+            System.out.println("Health: " + enemy.getAttributes().getHealth());
+            enemy.takeTurn();
+            enemy.receiveDamage(20);
+            System.out.println("After damage: " + enemy.getAttributes().getHealth());
+            System.out.println("----------------------------");
+        }
+
+
     }
 }

@@ -12,7 +12,7 @@ public class NewSorcerer extends AbstractEnemy {
     private final Attack secondaryAttack; // enemy attack
 
     public NewSorcerer(WorldEffect worldEffect) {
-        super(worldEffect, new Attributes(2, 4, 3, 9, 4, 3)); // fuerza, agilidad, defensa, magia, velocidad
+        super(worldEffect, new Attributes(100, 4, 3, 9, 4, 3)); // fuerza, agilidad, defensa, magia, velocidad
         staff = new WeaponStaff();
         AttackFactory factory = new StaffAttackFactory();
         primaryAttack = factory.createPrimaryAttack(staff);
