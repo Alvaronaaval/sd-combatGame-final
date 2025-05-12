@@ -25,10 +25,6 @@ public class NormalState implements CharacterState {
     public void checkStatus(Fighter fighter) {
         if(fighter.getAttributes().getHealth() < 20) // Enter Enraged state if health is below 20
             enraged(fighter);
-        //if()    // Enter Paralyzed state if hit with ice shard
-            //paralyzed(fighter);
-        //if()    // Enter Burned state if hit with fireball
-            //burned(fighter);
     }
     @Override
     public void stateEffect(Fighter fighter) {

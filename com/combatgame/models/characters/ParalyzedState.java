@@ -2,7 +2,7 @@ package com.combatgame.models.characters;
 
 public class ParalyzedState implements CharacterState {
     private int paralysisCount = 0;
-    private static int maxParalysisCount = 1; // Number of turns before returning to Normal State
+    private static int maxParalysisCount = 2; // Number of turns before returning to Normal State
 
     @Override
     public void paralyzed(Fighter fighter) {
