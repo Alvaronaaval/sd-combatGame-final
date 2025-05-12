@@ -26,7 +26,7 @@ public class Player implements Fighter {
 
     public void setPlayerStats() {
         Scanner scan = new Scanner(System.in);
-		int strength, agility, defense, magic, speed;
+		int strength = 0, agility = 0, defense = 0, magic = 0, speed = 0;
         int totalPoints = 30;
         
         System.out.println("Distribute a total of 30 points to your character (0-10 per stat): ");

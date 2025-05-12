@@ -31,8 +31,8 @@ public class EnragedState implements CharacterState {
     @Override
     public void stateEffect(Fighter fighter) {
         if(firstTime == 0) {    // Boosts attributes only once
-            fighter.getAttributes().setStrength((fighter.getAttributes().getStrength()*50)/100);
-            fighter.getAttributes().setMagic((fighter.getAttributes().getMagic()*50)/100);
+            fighter.getAttributes().setStrength((fighter.getAttributes().getStrength()*200)/100);
+            fighter.getAttributes().setMagic((fighter.getAttributes().getMagic()*200)/100);
         }
         firstTime++;
         System.out.println("Status: Enraged (Magic and strength increased by 50%)");
