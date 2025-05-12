@@ -37,7 +37,6 @@ public class CombatManager {
 
         // If not dodged, apply the damage
         defender.receiveDamage(attack, attacker);
-        defender.checkStatusEffect(attacker, attack);
         defender.getState().checkStatus(defender, attacker);
         defender.getState().stateEffect(defender);
 

@@ -53,10 +53,6 @@ public class Player implements Fighter, Subject  {
         System.out.println("Player's turn.");       // Unfinished method
     }
 
-    public void checkStatusEffect(Fighter opponent, Attack attack) {
-        
-    }
-
     @Override
     public void receiveDamage(Attack attack, Fighter opponent) { // Receive damage from opponent
         int damageTaken = 0;
