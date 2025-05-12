@@ -1,21 +1,19 @@
 package com.combatgame.core;
-import com.combatgame.models.characters.Player;
-import com.combatgame.models.objects.Attack;
-import com.combatgame.models.objects.WeaponSword;
-import com.combatgame.models.objects.factory.AttackFactory;
-import com.combatgame.models.objects.factory.SwordAttackFactory;
+import com.combatgame.gamestate.StatSelectUI;
+import com.combatgame.gamestate.WeaponSelectUi;
 import com.combatgame.models.EnemyFactory;
 import com.combatgame.models.WorldEffect;
 import com.combatgame.models.characters.Fighter;
-import com.combatgame.gamestate.WeaponSelectUi;
+import com.combatgame.models.characters.Player;
 
 public class main {
     public static void main(String[] args) {
         WeaponSelectUi weaponSelect = new WeaponSelectUi();
+        StatSelectUI statSelect = new StatSelectUI();
 
 
         Player player = new Player();
-        player.setPlayerStats();
+        statSelect.StatSelectMenu(player);
         weaponSelect.WeaponSelectMenu(player);
 
         // Mostrar weapon y stats
