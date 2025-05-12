@@ -18,4 +18,9 @@ public class IceShard implements Attack {
     public int getDamage() {
         return weapon.getDamage() + 8; // Ice Shard adds 8 damage
     }
+
+    @Override
+    public String getName() {
+        return "Ice Shard";
+    }
 }

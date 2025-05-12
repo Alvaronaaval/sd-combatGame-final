@@ -18,4 +18,8 @@ public class HeavySwing implements Attack {
     public int getDamage() {
         return weapon.getDamage() + 10; // Heavy Swing adds 10 damage
     }
+    @Override
+    public String getName() {
+        return "Heavy Swing";
+    }
 }

@@ -3,7 +3,7 @@ import  com.combatgame.models.objects.Weapon;
 import com.combatgame.models.objects.Attack;
 
 public class Fireball implements Attack {
-    private Weapon weapon;
+    private final Weapon weapon;
 
     public Fireball(Weapon weapon) {
         this.weapon = weapon;
@@ -18,5 +18,10 @@ public class Fireball implements Attack {
     @Override
     public int getDamage() {
         return weapon.getDamage(); // Fireball adds burn damage
+    }
+
+    @Override
+    public String getName() {
+        return "Fireball";
     }
 }

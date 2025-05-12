@@ -3,7 +3,7 @@ import com.combatgame.models.objects.Weapon;
 import com.combatgame.models.objects.Attack;
 
 public class QuickShot implements Attack {
-    private Weapon weapon;
+    private final Weapon weapon;
 
     public QuickShot(Weapon weapon) {
         this.weapon = weapon;
@@ -17,5 +17,10 @@ public class QuickShot implements Attack {
     @Override
     public int getDamage() {
         return weapon.getDamage(); // Quick Shot adds 3 damage
+    }
+
+    @Override
+    public String getName() {
+        return "Quick Shot";
     }
 }
