@@ -7,6 +7,7 @@ public interface Fighter {
     void receiveDamage(Attack attack, Fighter opponent);
     boolean isAlive();
     String getType();
+    boolean isFaster(Fighter opponent);
 
     Attributes getAttributes();
     boolean getSkipTurn();

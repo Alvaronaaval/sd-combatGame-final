@@ -144,6 +144,17 @@ public class Player implements Fighter {
     }
 
     @Override
+    public boolean isFaster(Fighter opponent) {
+        if(attributes.getSpeed() > opponent.getAttributes().getSpeed()) {
+            return true;
+        } else if(attributes.getSpeed() < opponent.getAttributes().getSpeed()) {
+            return false;
+        } else {
+            return Math.random() < 0.5; // Randomly decide who goes first
+        }
+    }
+
+    @Override
     public boolean isAlive() {
         return attributes.getHealth() > 0;
     }

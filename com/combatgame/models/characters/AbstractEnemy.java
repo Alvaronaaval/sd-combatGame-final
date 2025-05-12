@@ -51,4 +51,15 @@ public abstract class AbstractEnemy implements Fighter {
         }
         //return damageTaken;
     }
+
+    @Override
+    public boolean isFaster(Fighter opponent) {
+        if(attributes.getSpeed() > opponent.getAttributes().getSpeed()) {
+            return true;
+        } else if(attributes.getSpeed() < opponent.getAttributes().getSpeed()) {
+            return false;
+        } else {
+            return Math.random() < 0.5; // Randomly decide who goes first
+        }
+    }
 }
