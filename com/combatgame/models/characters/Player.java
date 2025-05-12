@@ -67,13 +67,7 @@ public class Player implements Fighter {
             else System.out.println("\nThe 30 points have been distributed correctly.");
         }
         scan.close();
-
-        attributes.setHealth(100);
-        attributes.setStrength(strength);
-        attributes.setAgility(agility);
-        attributes.setDefense(defense);
-        attributes.setMagic(magic);
-        attributes.setSpeed(speed);
+        this.attributes = new Attributes(100, strength, agility, defense, magic, speed);
     }
 
     public void setWeapon() {
