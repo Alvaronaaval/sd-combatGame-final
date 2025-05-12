@@ -22,7 +22,7 @@ public class Player implements Fighter {
     private Attack secondaryAttack; // player attack
 
     public Player() {
-        state = new NormalState(); //Default state
+        this.state = new NormalState(); //Default state
     }
 
     private boolean validStat(int stat) {
@@ -76,7 +76,6 @@ public class Player implements Fighter {
         attributes.setSpeed(speed);
     }
 
-    @Override
     public void setWeapon() {
         Scanner scan = new Scanner(System.in);
         AttackFactory factory;
