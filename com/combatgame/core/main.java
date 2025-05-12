@@ -1,11 +1,10 @@
 package com.combatgame.core;
-import com.combatgame.models.objects.WeaponBow;
-import com.combatgame.models.objects.WeaponSword;
-import com.combatgame.models.objects.Weapon;
+import com.combatgame.models.characters.Player;
 import com.combatgame.models.objects.Attack;
+import com.combatgame.models.objects.WeaponSword;
 import com.combatgame.models.objects.factory.AttackFactory;
 import com.combatgame.models.objects.factory.SwordAttackFactory;
-import com.combatgame.models.characters;
+
 
 public class main {
     public static void main(String[] args) {
@@ -23,6 +22,10 @@ public class main {
 
         primary.executeAttack();
         System.out.println("Damage: " + primary.getDamage());
+
+        Player player = new Player();
+        player.setPlayerStats();
+
 
     }
 }
