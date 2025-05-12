@@ -4,7 +4,7 @@ import com.combatgame.models.WorldEffect;
 
 public class NewWarrior extends AbstractEnemy {
     public NewWarrior(WorldEffect worldEffect) {
-        super(worldEffect, new Attributes(9, 5, 4, 2, 3, 4)); // fuerza, agilidad, defensa, magia, velocidad
+        super(worldEffect, new Attributes(100, 5, 4, 2, 3, 4)); // fuerza, agilidad, defensa, magia, velocidad
     }
 
     @Override

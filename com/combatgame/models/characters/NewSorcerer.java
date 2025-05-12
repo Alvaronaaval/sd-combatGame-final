@@ -4,7 +4,7 @@ import com.combatgame.models.WorldEffect;
 
 public class NewSorcerer extends AbstractEnemy {
     public NewSorcerer(WorldEffect worldEffect) {
-        super(worldEffect, new Attributes(2, 4, 3, 9, 4, 3)); // fuerza, agilidad, defensa, magia, velocidad
+        super(worldEffect, new Attributes(100, 4, 3, 9, 4, 3)); // fuerza, agilidad, defensa, magia, velocidad
     }
 
     @Override
