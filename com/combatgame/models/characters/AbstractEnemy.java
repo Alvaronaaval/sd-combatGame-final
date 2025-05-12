@@ -48,7 +48,6 @@ public abstract class AbstractEnemy implements Fighter {
         } else {
             damageTaken = (attack.getDamage() + opponent.getAttributes().getMagic()*2) - (attributes.getDefense()*50)/100;
         }
-        //return damageTaken;
     }
 
     @Override
@@ -59,6 +58,16 @@ public abstract class AbstractEnemy implements Fighter {
             return false;
         } else {
             return Math.random() < 0.5; // Randomly decide who goes first
+        }
+    }
+
+    public void checkStatusEffect(Fighter opponent, Attack attack) {
+        if(opponent.getWeapon().getName() == "Staff") {
+            if(opponent.getPrimaryAttack().getName() == "Fireball") {
+                applyState(new BurnedState());
+            } else if(opponent.getPrimaryAttack().getName() == "IceShard") {
+                applyState(new ParalyzedState());
+            }
         }
     }
 }

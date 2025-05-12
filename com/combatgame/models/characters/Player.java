@@ -53,7 +53,13 @@ public class Player implements Fighter, Subject  {
     }
 
     public void checkStatusEffect(Fighter opponent, Attack attack) {
-        
+        if(opponent.getWeapon().getName() == "Staff") {
+            if(opponent.getPrimaryAttack().getName() == "Fireball") {
+                applyState(new BurnedState());
+            } else if(opponent.getPrimaryAttack().getName() == "IceShard") {
+                applyState(new ParalyzedState());
+            }
+        }
     }
 
     @Override
