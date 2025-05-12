@@ -24,7 +24,7 @@ public class BurnedState implements CharacterState {
     }
 
     @Override
-    public void checkStatus(Fighter fighter) {
+    public void checkStatus(Fighter fighter, Fighter opponent) {
         if(burnedCount >= maxBurnedCount)
             healed(fighter); // Return to Normal State
     }
