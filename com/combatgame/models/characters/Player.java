@@ -20,7 +20,6 @@ public class Player implements Fighter, Subject  {
     public void setAttributes(int health, int strength, int agility, int defense, int magic, int speed) {
         this.attributes = new Attributes(health, strength, agility, defense, magic, speed);
     }
-
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
