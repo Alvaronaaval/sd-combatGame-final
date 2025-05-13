@@ -1,18 +1,20 @@
 package com.combatgame.core;
 
-import com.combatgame.models.characters.Player;
-import com.combatgame.models.objects.Weapon;
+import com.combatgame.gamestate.CombatManager;
+import com.combatgame.gamestate.RandomEnemyGenerator;
 import com.combatgame.gamestate.StatSelectUI;
 import com.combatgame.gamestate.WeaponSelectUi;
-import com.combatgame.gamestate.RandomEnemyGenerator;
 import com.combatgame.models.characters.Fighter;
-import com.combatgame.gamestate.CombatManager;
+import com.combatgame.models.characters.Player;
+import com.combatgame.models.characters.Score;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         // Create the player character
         Player player = new Player();
+        player.addObserver(Score.getInstance());
+
 
         // Step 1: Stat selection
         StatSelectUI statSelectUI = new StatSelectUI();
@@ -49,7 +51,7 @@ public class Main {
     }
 
     // Method to start combat between player and enemy
-    private static void startCombat(Fighter player, Fighter enemy) {
+    private static void startCombat(Player player, Fighter enemy) {
         // Create an instance of the CombatManager to handle combat logic
         CombatManager combatManager = new CombatManager();
 
@@ -98,9 +100,17 @@ public class Main {
         // Determine the outcome
         if (player.isAlive()) {
             System.out.println("Player wins!");
+            // Comprobamos si el player es una instancia de Player real
+            if (player instanceof Player) {
+                ((Player) player).onEnemyKilled(enemy); // onEnemyKilled es un metodo específico de la clase Player.
+                                                        // pero estamos usando un player de tipo Fighter (interfaz),
+                                                        // que no usa ese metodo, y por eso lo casteamos a Player para usarlo
+            }
         } else {
             System.out.println("Enemy wins!");
         }
+        System.out.println("Final Score: " + Score.getInstance().getTotalPoints());
+
 
         // Close the scanner here after the combat ends
         scanner.close();
@@ -128,8 +138,3 @@ public class Main {
         return attackChoice;
     }
 }
-
-
-
-
-
