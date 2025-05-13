@@ -8,11 +8,13 @@ public abstract class AbstractEnemy implements Fighter {
     protected Attributes attributes;
     protected WorldEffect worldEffect;
     protected boolean skipTurn = false;
-    protected CharacterState state;    
+    protected CharacterState state;
 
     public AbstractEnemy(WorldEffect worldEffect, Attributes attributes) {
         this.worldEffect = worldEffect;
         this.attributes = attributes;
+        this.state = new NormalState();
+
     }
 
     @Override
@@ -46,14 +48,18 @@ public abstract class AbstractEnemy implements Fighter {
     }
 
     @Override
-    public void receiveDamage(Attack attack, Fighter opponent) { // Receive damage from opponent
-        int damageTaken = 0;
+    public void receiveDamage(Attack attack, Fighter opponent) {
+        int damageTaken;
         if(opponent.getWeapon().getDamageType() == DamageType.PHYSICAL) {
             damageTaken = (attack.getDamage() + opponent.getAttributes().getStrength()*2) - attributes.getDefense();
         } else {
             damageTaken = (attack.getDamage() + opponent.getAttributes().getMagic()*2) - (attributes.getDefense()*50)/100;
         }
+
+        damageTaken = Math.max(0, damageTaken); // Prevent negative damage
+        attributes.setHealth(attributes.getHealth() - damageTaken);
     }
+
 
     @Override
     public boolean isFaster(Fighter opponent) {

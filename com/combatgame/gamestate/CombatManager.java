@@ -7,14 +7,10 @@ import com.combatgame.models.objects.DamageType;
 public class CombatManager {
 
     public void performAttack(Fighter attacker, Fighter defender, int attackType) {
-        // Determines who attacks first based on speed
-        Fighter firstAttacker = (attacker.isFaster(defender)) ? attacker : defender;
-        Fighter secondAttacker = (firstAttacker == attacker) ? defender : attacker;
-
-        // The first attacker performs their attack
-        Attack attackToExecute = getAttack(attackType, firstAttacker);
-        executeAttack(firstAttacker, secondAttacker, attackToExecute);
+        Attack attackToExecute = getAttack(attackType, attacker);
+        executeAttack(attacker, defender, attackToExecute);
     }
+
 
     private Attack getAttack(int attackType, Fighter attacker) {
         // Retrieves the attack based on type (1 = primary, 2 = secondary)
