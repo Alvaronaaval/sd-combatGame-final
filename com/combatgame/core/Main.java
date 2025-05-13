@@ -7,14 +7,15 @@ import com.combatgame.gamestate.WeaponSelectUi;
 import com.combatgame.models.characters.Fighter;
 import com.combatgame.models.characters.Player;
 import com.combatgame.models.characters.Score;
+
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         // Create the player character
         Player player = new Player();
         player.addObserver(Score.getInstance());
-
 
         // Step 1: Stat selection
         StatSelectUI statSelectUI = new StatSelectUI();
@@ -25,11 +26,26 @@ public class Main {
         weaponSelectUi.WeaponSelectMenu(player); // Let the player choose their weapon
         player.getWeapon().displayIllustration();
 
-        // Step 3: Create an enemy and Scenario
-        Fighter enemy = RandomEnemyGenerator.generate();
+        // Step 3: Start combat loop (player keeps fighting enemies until defeated)
+        while (player.isAlive()) {
+            // Generate a new enemy for the player to fight
+            Fighter enemy = RandomEnemyGenerator.generate();
 
-        // Now you can display the player's selected weapon and stats
-        System.out.println("Player selected: " + player.getWeapon().getName());
+            // Now you can display the player's selected weapon and stats
+            displayCharacterStats(player, enemy);
+
+            // Step 4: Start combat with the generated enemy
+            startCombat(player, enemy);
+        }
+
+        // Once the player is defeated, end the game
+        System.out.println("Game Over! You have been defeated.");
+    }
+
+    // Method to display character stats (Player and Enemy)
+    private static void displayCharacterStats(Player player, Fighter enemy) {
+        // Display player's stats
+        System.out.println("\nPlayer selected: " + player.getWeapon().getName());
         System.out.println("Health: " + player.getAttributes().getHealth());
         System.out.println("Strength: " + player.getAttributes().getStrength());
         System.out.println("Speed: " + player.getAttributes().getSpeed());
@@ -37,18 +53,14 @@ public class Main {
         System.out.println("Magic: " + player.getAttributes().getMagic());
         System.out.println("Agility: " + player.getAttributes().getAgility());
 
-        // Display enemy stats
-        System.out.println("Enemy selected: " + enemy.getWeapon().getName());
+        // Display enemy's stats
+        System.out.println("\nEnemy selected: " + enemy.getWeapon().getName());
         System.out.println("Health: " + enemy.getAttributes().getHealth());
         System.out.println("Strength: " + enemy.getAttributes().getStrength());
         System.out.println("Speed: " + enemy.getAttributes().getSpeed());
         System.out.println("Defense: " + enemy.getAttributes().getDefense());
         System.out.println("Magic: " + enemy.getAttributes().getMagic());
         System.out.println("Agility: " + enemy.getAttributes().getAgility());
-
-        // Step 4: Start combat (simplified)
-        startCombat(player, enemy);
-
     }
 
     // Method to start combat between player and enemy
@@ -73,7 +85,7 @@ public class Main {
 
             // Determine who attacks first based on speed
             if (player.isFaster(enemy)) {
-                if(!player.getSkipTurn()) { // Execute if player skipTurn is false
+                if (!player.getSkipTurn()) { // Execute if player skipTurn is false
                     // Player attacks first, perform selected attack
                     if (attackChoice == 1) {
                         combatManager.performAttack(player, enemy, 1); // Player uses primary attack
@@ -81,7 +93,7 @@ public class Main {
                         combatManager.performAttack(player, enemy, 2); // Player uses secondary attack
                     }
                 }
-                if(!enemy.getSkipTurn()) {  // Execute if enemy skipTurn is false
+                if (!enemy.getSkipTurn()) {  // Execute if enemy skipTurn is false
                     if (enemy.isAlive()) {
                         java.util.Random r = new java.util.Random();
                         int randomEnemyAttack = r.nextInt(2) + 1; // Randomly choose number 1 or 2
@@ -89,13 +101,13 @@ public class Main {
                     }
                 }
             } else {
-                if(!enemy.getSkipTurn()) {  // Execute if enemy skipTurn is false
+                if (!enemy.getSkipTurn()) {  // Execute if enemy skipTurn is false
                     // Enemy attacks first
                     java.util.Random r = new java.util.Random();
                     int randomEnemyAttack = r.nextInt(2) + 1; // Randomly choose number 1 or 2
                     combatManager.performAttack(enemy, player, randomEnemyAttack); // Enemy uses random attack
                 }
-                if(!player.getSkipTurn()) { // Execute if player skipTurn is false
+                if (!player.getSkipTurn()) { // Execute if player skipTurn is false
                     if (player.isAlive()) {
                         // Prompt the player to choose their attack after the enemy's turn
                         System.out.println("It's your turn!");
@@ -113,20 +125,16 @@ public class Main {
         // Determine the outcome
         if (player.isAlive()) {
             System.out.println("Player wins!");
-            // Comprobamos si el player es una instancia de Player real
+            // If the player wins, call onEnemyKilled to update the score
             if (player instanceof Player) {
-                ((Player) player).onEnemyKilled(enemy); // onEnemyKilled es un metodo específico de la clase Player.
-                                                        // pero estamos usando un player de tipo Fighter (interfaz),
-                                                        // que no usa ese metodo, y por eso lo casteamos a Player para usarlo
+                ((Player) player).onEnemyKilled(enemy); // onEnemyKilled is a method specific to the Player class
             }
         } else {
             System.out.println("Enemy wins!");
         }
         System.out.println("Final Score: " + Score.getInstance().getTotalPoints());
 
-
-        // Close the scanner here after the combat ends
-        scanner.close();
+        // Do NOT close the scanner here, it should stay open until the program ends
     }
 
     // Helper method to get a valid attack choice from the user

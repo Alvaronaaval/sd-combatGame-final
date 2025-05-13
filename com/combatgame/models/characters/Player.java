@@ -54,14 +54,18 @@ public class Player implements Fighter, Subject  {
     }
 
     @Override
-    public void receiveDamage(Attack attack, Fighter opponent) { // Receive damage from opponent
-        int damageTaken = 0;
+    public void receiveDamage(Attack attack, Fighter opponent) {
+        int damageTaken;
         if(opponent.getWeapon().getDamageType() == DamageType.PHYSICAL) {
             damageTaken = (attack.getDamage() + opponent.getAttributes().getStrength()*2) - attributes.getDefense();
         } else {
             damageTaken = (attack.getDamage() + opponent.getAttributes().getMagic()*2) - (attributes.getDefense()*50)/100;
         }
+
+        damageTaken = Math.max(0, damageTaken); // Prevent negative damage
+        attributes.setHealth(attributes.getHealth() - damageTaken);
     }
+
 
     @Override
     public boolean isFaster(Fighter opponent) {
