@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="688af398-3923-4d6f-8e9f-0193b38b7a38" name="Changes" comment="Final checks">
-      <change beforePath="$PROJECT_DIR$/com/combatgame/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/combatgame/core/Main.java" afterDir="false" />
+    <list default="true" id="688af398-3923-4d6f-8e9f-0193b38b7a38" name="Changes" comment="Javi Build">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sd-combatGame-final/com/combatgame/core/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sd-combatGame-final/com/combatgame/core/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sd-combatGame-final/com/combatgame/gamestate/CombatManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sd-combatGame-final/com/combatgame/gamestate/CombatManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sd-combatGame-final/com/combatgame/models/characters/AbstractEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sd-combatGame-final/com/combatgame/models/characters/AbstractEnemy.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +143,8 @@
       <workItem from="1747044755706" duration="6940000" />
       <workItem from="1747074835202" duration="182000" />
       <workItem from="1747075148359" duration="10710000" />
-      <workItem from="1747125452498" duration="1229000" />
+      <workItem from="1747125452498" duration="2747000" />
+      <workItem from="1747130162479" duration="960000" />
     </task>
     <task id="LOCAL-00001" summary="weapons strategy interface">
       <option name="closed" value="true" />
@@ -326,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747086927421</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Javi Build">
+      <option name="closed" value="true" />
+      <created>1747127938212</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1747127938212</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,6 +365,7 @@
     <MESSAGE value="Weapon Select UI" />
     <MESSAGE value="main" />
     <MESSAGE value="Final checks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final checks" />
+    <MESSAGE value="Javi Build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javi Build" />
   </component>
 </project>

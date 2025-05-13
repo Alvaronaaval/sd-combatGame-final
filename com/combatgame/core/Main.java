@@ -23,6 +23,7 @@ public class Main {
         // Step 2: Weapon selection
         WeaponSelectUi weaponSelectUi = new WeaponSelectUi();
         weaponSelectUi.WeaponSelectMenu(player); // Let the player choose their weapon
+        player.getWeapon().displayIllustration();
 
         // Step 3: Create an enemy and Scenario
         Fighter enemy = RandomEnemyGenerator.generate();
