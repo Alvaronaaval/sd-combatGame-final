@@ -72,26 +72,38 @@ public class Main {
 
             // Determine who attacks first based on speed
             if (player.isFaster(enemy)) {
-                // Player attacks first, perform selected attack
-                if (attackChoice == 1) {
-                    combatManager.performAttack(player, enemy, 1); // Player uses primary attack
-                } else {
-                    combatManager.performAttack(player, enemy, 2); // Player uses secondary attack
-                }
-                if (enemy.isAlive()) {
-                    combatManager.performAttack(enemy, player, 1); // Enemy attacks back
-                }
-            } else {
-                // Enemy attacks first
-                combatManager.performAttack(enemy, player, 1); // Enemy uses primary attack
-                if (player.isAlive()) {
-                    // Prompt the player to choose their attack after the enemy's turn
-                    System.out.println("It's your turn!");
-                    attackChoice = getValidAttackChoice(scanner); // Get user input for the attack
+                if(!player.getSkipTurn()) { // Execute if player skipTurn is false
+                    // Player attacks first, perform selected attack
                     if (attackChoice == 1) {
                         combatManager.performAttack(player, enemy, 1); // Player uses primary attack
                     } else {
                         combatManager.performAttack(player, enemy, 2); // Player uses secondary attack
+                    }
+                }
+                if(!enemy.getSkipTurn()) {  // Execute if enemy skipTurn is false
+                    if (enemy.isAlive()) {
+                        java.util.Random r = new java.util.Random();
+                        int randomEnemyAttack = r.nextInt(2) + 1; // Randomly choose number 1 or 2
+                        combatManager.performAttack(enemy, player, randomEnemyAttack); // Enemy attacks back
+                    }
+                }
+            } else {
+                if(!enemy.getSkipTurn()) {  // Execute if enemy skipTurn is false
+                    // Enemy attacks first
+                    java.util.Random r = new java.util.Random();
+                    int randomEnemyAttack = r.nextInt(2) + 1; // Randomly choose number 1 or 2
+                    combatManager.performAttack(enemy, player, randomEnemyAttack); // Enemy uses random attack
+                }
+                if(!player.getSkipTurn()) { // Execute if player skipTurn is false
+                    if (player.isAlive()) {
+                        // Prompt the player to choose their attack after the enemy's turn
+                        System.out.println("It's your turn!");
+                        attackChoice = getValidAttackChoice(scanner); // Get user input for the attack
+                        if (attackChoice == 1) {
+                            combatManager.performAttack(player, enemy, 1); // Player uses primary attack
+                        } else {
+                            combatManager.performAttack(player, enemy, 2); // Player uses secondary attack
+                        }
                     }
                 }
             }
