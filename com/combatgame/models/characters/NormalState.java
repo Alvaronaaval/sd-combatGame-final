@@ -28,7 +28,8 @@ public class NormalState implements CharacterState {
         if(opponent.getWeapon().getName() == "Staff") {
             if(opponent.getPrimaryAttack().getName() == "Fireball") {
                 burned(fighter);
-            } else if(opponent.getSecondaryAttack().getName() == "IceShard") {
+            } 
+            if(opponent.getSecondaryAttack().getName() == "Ice Shard") {
                 paralyzed(fighter);
             }
         }
